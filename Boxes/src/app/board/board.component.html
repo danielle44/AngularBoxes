@@ -1,0 +1,7 @@
+<app-counter [counter]="getCounter()"></app-counter>
+
+<button (click)="addNewBox()">Add new Box</button>
+
+<div *ngFor="let box of boxes">
+  <app-box [boxInfo]="box" (delete)="removeBox($event)"></app-box>
+</div>

@@ -13,8 +13,13 @@ export class BoardComponent implements OnInit {
   lastBoxIndex: number;
 
   constructor(private boxesProvider: BoxesProviderService) {
-    this.boxes = this.boxesProvider.getBoxes();
+    this.boxes = [];
     this.lastBoxIndex = this.getCounter();
+
+    this.boxesProvider.getBoxes().subscribe((boxes) => {
+      this.boxes = boxes;
+      this.lastBoxIndex = this.getCounter();
+    });
   }
 
   getCounter() {
